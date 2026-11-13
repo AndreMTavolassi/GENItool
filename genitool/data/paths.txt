@@ -1,0 +1,22 @@
+# Caminhos comuns; substitua pela wordlist autorizada para seu escopo.
+robots.txt
+sitemap.xml
+.well-known/security.txt
+login
+admin
+dashboard
+api
+api/v1
+health
+status
+docs
+swagger
+swagger.json
+openapi.json
+assets
+static
+uploads
+backup
+config
+.git/HEAD
+.env

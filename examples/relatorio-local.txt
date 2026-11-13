@@ -1,0 +1,92 @@
+GENItool — RELATÓRIO DE RECONHECIMENTO
+========================================================================
+Versão: 0.1.0
+Alvo: http://127.0.0.1:34281/app/
+Início: 2026-11-13T14:25:09.342192+00:00
+Fim: 2026-11-13T14:25:16.418358+00:00
+
+ESCOPO E INTERPRETAÇÃO
+Os registros abaixo são evidências de reconhecimento em um alvo autorizado.
+Uma resposta reproduzível confirma a observação HTTP, não uma vulnerabilidade.
+Versões e tecnologias são inferências dos detectores e podem estar incorretas.
+CVEs são candidatas: valide versão afetada, configuração e correções aplicadas.
+A consulta não executa exploração nem comprova que o alvo seja vulnerável.
+SHA256 permite conferir integridade; não é assinatura nem prova de autoria.
+
+PARÂMETROS
+  ports: 34281
+  http_timeout: 10
+  rate: 20.0
+  max_paths: 4
+  max_cve_queries: 5
+  authenticated_headers_supplied: True
+
+RESUMO DAS ETAPAS
+  nmap: concluído; registros: 1
+  wappalyzer: concluído; registros: 4
+  fuzzing: concluído; registros: 3
+  cves: ignorado; registros: 0
+
+NMAP — PORTAS E SERVIÇOS
+------------------------------------------------------------------------
+Estado: concluído
+Nota: Somente portas TCP solicitadas; -sT -sV --version-light -Pn.
+  [1] 127.0.0.1:34281/tcp — unknown
+
+WAPPALYZER — TECNOLOGIAS
+------------------------------------------------------------------------
+Estado: concluído
+Nota: Assinaturas históricas Wappalyzer 6.10.66; somente HTML e cabeçalhos, sem executar JavaScript.
+Nota: Resposta HTTP 200; fingerprint é evidência, não confirmação de vulnerabilidade.
+  [1] WordPress
+    Versão observada: 6.4.2
+    Confiança do detector: 100
+    CPEs: ["cpe:2.3:a:wordpress:wordpress:*:*:*:*:*:*:*:*"]
+    Fonte: Wappalyzer 6.10.66 (análise estática)
+  [2] MySQL
+    Confiança do detector: 100
+    CPEs: ["cpe:2.3:a:mysql:mysql:*:*:*:*:*:*:*:*"]
+    Fonte: Wappalyzer 6.10.66 (análise estática)
+  [3] PHP
+    Confiança do detector: 100
+    CPEs: ["cpe:2.3:a:php:php:*:*:*:*:*:*:*:*"]
+    Fonte: Wappalyzer 6.10.66 (análise estática)
+  [4] Nginx
+    Versão observada: 1.24.0
+    Confiança do detector: 100
+    CPEs: ["cpe:2.3:a:f5:nginx:*:*:*:*:*:*:*:*"]
+    Fonte: Wappalyzer 6.10.66 (análise estática)
+
+FUZZING — CAMINHOS HTTP
+------------------------------------------------------------------------
+Estado: concluído
+Nota: Leitura da wordlist limitada a 4 caminhos e linhas de até 4096 caracteres.
+Nota: 9 requisição(ões); limite máximo: 10. Redirecionamentos não são seguidos.
+  [1] http://127.0.0.1:34281/app/admin
+    HTTP: 200
+    Bytes capturados: 30
+    Validação: reproducible
+    HTTP na revalidação: 200
+    Corpo capturado truncado: False
+    SHA256 do corpo capturado: d02f40dfd5cdd25d589c29cb760ee4a71695c1f70f03cf003b727bd50e6c10b4
+  [2] http://127.0.0.1:34281/app/health
+    HTTP: 200
+    Bytes capturados: 15
+    Validação: reproducible
+    HTTP na revalidação: 200
+    Corpo capturado truncado: False
+    SHA256 do corpo capturado: a29ee2b15c494311c52521766e44af56a3ad2248e7a8ab465e5206463c13d288
+  [3] http://127.0.0.1:34281/app/private
+    HTTP: 403
+    Bytes capturados: 17
+    Validação: authentication_required
+    HTTP na revalidação: 403
+    Corpo capturado truncado: False
+    SHA256 do corpo capturado: 233f644f36b81ad0aba5adad20202b4c6314fb3063c44b6ad655a78b4b952e0a
+
+CVEs — POSSÍVEIS CORRESPONDÊNCIAS
+------------------------------------------------------------------------
+Estado: ignorado
+Nota: Desativado pelo usuário.
+Nenhuma evidência registrada nesta etapa.
+A ausência de registros não comprova ausência de vulnerabilidades.

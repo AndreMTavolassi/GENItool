@@ -1,0 +1,8 @@
+{
+  "name": "genitool-fingerprints",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Optional historical Wappalyzer static signatures for the GENItool Python CLI",
+  "engines": {"node": ">=18"},
+  "dependencies": {"wappalyzer": "6.10.66"}
+}
